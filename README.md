@@ -1,64 +1,110 @@
-# 🔬 CR-39 Particle Counter: Requirements & Installation
+# CR-39 Particle Counter
 
-> This guide provides all the necessary Python requirements and step-by-step installation instructions to run the CR-39 Particle Counter application.
+![Screenshot](screenshot.png)
 
-<p align="center">
-  <img src="https://i.imgur.com/your-image-url.png" alt="CR-39 Particle Counter Interface" width="800"/>
-  <br>
-  <em>(This is a placeholder. Replace with a real screenshot of your application.)</em>
-</p>
+## Features
+- Upload CR-39 images (PNG, JPG, JPEG, BMP, TIF).
+- Auto-detect particle tracks using OpenCV.
+- Filter by particle area (px²) and circularity (0.0-1.0).
+- Zoom (mouse wheel or Ctrl+/-) and pan (drag mouse).
+- Edit mode: Click to add/remove particles.
+- Live particle count display.
+- Save results to text file.
+- Cross-platform (Windows, macOS, Linux).
 
----
+## Installation
 
-## 📋 Requirements
+### Windows
+1. **Install Python 3.12+**:
+   ```
+   winget install Python.Python.3.12
+   ```
+   Or download from [python.org](https://www.python.org/downloads/), run installer, and check "Add Python to PATH".
 
-To run this application, you'll need Python and a few specific external libraries.
+2. **Install Dependencies**:
+   ```
+   pip install pillow opencv-python numpy
+   ```
 
-### 1. Python 🐍
-* **Python 3.x** is required. The application is built on Python 3 and is not compatible with Python 2. You can download the latest version from the [official Python website](https://www.python.org/downloads/).
+3. **Clone Repository**:
+   ```
+   git clone https://github.com/Garud218/cr39_particle_counter.git
+   cd cr39_particle_counter
+   ```
 
-### 2. Python Libraries 📚
-The application depends on the following external libraries:
+### macOS
+1. **Install Homebrew** (if not installed):
+   ```
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
 
-* **OpenCV (`opencv-python`)**: The core library for all image processing and analysis tasks, such as thresholding and the watershed algorithm.
-* **NumPy (`numpy`)**: A fundamental package for scientific computing, used by OpenCV for handling image data as numerical arrays.
-* **Pillow (`Pillow`)**: The modern fork of the Python Imaging Library (PIL), used here to interface between OpenCV image formats and the Tkinter UI.
+2. **Install Python 3.12+**:
+   ```
+   brew install python@3.12
+   ```
 
-> **Note**: The graphical user interface is built with **Tkinter**, which is part of Python's standard library and does **not** require a separate installation.
+3. **Install Dependencies**:
+   ```
+   pip install pillow opencv-python numpy
+   ```
 
----
+4. **Clone Repository**:
+   ```
+   git clone https://github.com/Garud218/cr39_particle_counter.git
+   cd cr39_particle_counter
+   ```
 
-## ⚙️ Installation Instructions
+### Linux (Ubuntu/Debian)
+1. **Install Python 3.12+ and Tkinter**:
+   ```
+   sudo apt update
+   sudo apt install python3.12 python3-pip python3-tk git -y
+   ```
 
-Follow these steps to set up your environment and install all dependencies.
+2. **Install Dependencies**:
+   ```
+   pip install pillow opencv-python numpy
+   ```
 
-### Step 1: Install Python
-If you don't have Python 3, download and install it from [python.org](https://www.python.org/downloads/).
-> **✅ Important**: During the Windows installation, make sure to check the box that says **"Add Python to PATH"**. This will allow you to run Python and `pip` from your command prompt.
+3. **Clone Repository**:
+   ```
+   git clone https://github.com/Garud218/cr39_particle_counter.git
+   cd cr39_particle_counter
+   ```
 
-### Step 2: Download the Application Code
-Download the `microscopic_pc.py` file and save it to a new folder on your computer.
+**Other Linux Distros** (e.g., Fedora):
+- Replace `apt` with `dnf`:
+  ```
+  sudo dnf install python3 python3-pip python3-tkinter git -y
+  ```
+- Then follow steps 2 and 3 above.
 
-### Step 3: Install Required Libraries (Two Methods)
+## Usage
 
-You can install the libraries one by one or all at once using a `requirements.txt` file. The second method is recommended.
+1. **Run the App**:
+   ```
+   python microscopic_pc.py
+   ```
 
-#### Method A: The Easy Way (Recommended)
-1.  In the same folder where you saved the application, create a new text file named `requirements.txt`.
-2.  Copy and paste the following lines into that file:
-    ```txt
-    numpy
-    opencv-python
-    Pillow
-    ```
-3.  Save the file.
-4.  Open your command prompt or terminal, navigate to that folder, and run this single command:
-    ```bash
-    pip install -r requirements.txt
-    ```
-    This command tells `pip` (Python's package installer) to read the file and install all the listed libraries automatically.
+2. **Upload Image**:
+   - Click "Upload Image".
+   - Select CR-39 image file.
 
-#### Method B: Manual Installation
-If you prefer to install the libraries individually, open your command prompt or terminal and run the following command:
-```bash
-pip install numpy opencv-python Pillow
+3. **Adjust Filters**:
+   - Use sliders or input fields for area (default: 75-2000 px²) and circularity (0.65-1.0).
+   - Changes update count and green contours live.
+
+4. **Navigate Image**:
+   - Zoom: Mouse wheel or Ctrl+/-.
+   - Pan: Drag with left/middle mouse.
+   - Fit: Click '⬜' button.
+
+5. **Edit Particles**:
+   - Click "Edit Particles" to toggle mode.
+   - Remove: Click green contour.
+   - Add: Click empty area for new circle.
+   - Toggle off to exit.
+
+6. **Save Results**:
+   - Click "Save Results".
+   - Choose filename for text output.
